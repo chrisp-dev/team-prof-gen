@@ -1,0 +1,20 @@
+{
+  "name": "team-prof-gen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisp-dev/team-prof-gen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisp-dev/team-prof-gen/issues"
+  },
+  "homepage": "https://github.com/chrisp-dev/team-prof-gen#readme"
+}

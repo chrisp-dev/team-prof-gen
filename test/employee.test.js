@@ -29,5 +29,10 @@ describe("Employee class", () => {
         expect(e.email).toBe(email);
     });
 
+    it("should have parameter title", () => {
+        const title = "The boss";
+        const e = new Employee("Carl Sagan", "cosmoscarl@gmail.com", title);
+        expect(e.title).toBe(title);
+    });
 
 });

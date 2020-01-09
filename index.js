@@ -3,6 +3,7 @@ const Employee = require('./lib/employee');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const inquirer = require('inquirer');
+const fs = require('fs');
 
 const continuityQuestion = {
     type: 'list',
@@ -14,11 +15,6 @@ const continuityQuestion = {
 // contains team info
 const answers = [];
 
-// need render function to accept array of team members with their own render fn
-// which returns html to append
-(() => {
-    main().then(console.log);
-})();
 // recursive function to gather team info
 async function ask(quests) {
     // Confirm: add more employees?
@@ -49,5 +45,33 @@ async function main() {
     return ask(Manager.getQuestions());
 }
 
-let en = new Engineer("Cready", "cc1", "cc2", "cc3");
-// en.render().then(console.log);
+// need render function to accept array of team members with their own render fn
+// which returns html to append
+(() => {
+    main().then(team => {
+        team.forEach(member => {
+            console.log(member);
+            if (member.manager_name) {
+                let manager = new Manager(member);
+
+                manager.render().then(html => {
+
+                    fs.appendFile("index.html", html, function () {
+
+                    });
+                })
+
+            } else if (member.intern_name) {
+                let intern = new Intern(member);
+                fs.appendFile("index.html", intern.render(), function () {
+
+                });
+            } else if (member.engineer_name) {
+                let engineer = new Engineer(member);
+                fs.appendFile("index.html", engineer.render(), function () {
+
+                });
+            }
+        });
+    });
+})();

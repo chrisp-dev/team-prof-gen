@@ -14,11 +14,17 @@ const continuityQuestion = {
 // contains team info
 const answers = [];
 
+// need render function to accept array of team members with their own render fn
+// which returns html to append
+(() => {
+    main().then(console.log);
+})();
 // recursive function to gather team info
 async function ask(quests) {
     // Confirm: add more employees?
     let result = await inquirer.prompt(quests).then(response => {
-        answers.push(response);
+        console.log('-----')
+        if (!response.moreEmp) answers.push(response);
         return response;
     });
 
@@ -35,32 +41,13 @@ async function ask(quests) {
         default:
             return ask(continuityQuestion);
     }
-
+    return result;
 }
 
-function main() {
+async function main() {
     // code goes here
-    ask(Manager.getQuestions());
+    return ask(Manager.getQuestions());
 }
 
-// main();
-const path = require('path');
-const fs = require('fs');
-const util = require('util');
-
-const readFileAsync = util.promisify(fs.readFile);
-
-async function ru() {
-    let el = await readFileAsync(path.join(__dirname, "views", "engineer.html"), 'utf-8');
-
-    // fake input name
-    const member = { name: "Christopher Paradeise", role: "Engineer", email: "cparadise@gmail.com", github: "chrisp-dev" };
-    el = el.replace('{name}', member.name)
-        .replace('{role}', member.role)
-        .replace('{github}', member.github)
-        .replace('{email}', member.email);
-
-    console.log(el);
-}
-
-ru();
+let en = new Engineer("Cready", "cc1", "cc2", "cc3");
+// en.render().then(console.log);

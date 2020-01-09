@@ -20,4 +20,9 @@ describe("Intern class", () => {
         const e1 = new Intern("Ingred", "ingsie@gmail.com", "UW");
         const e2 = new Intern("Ragnar", "kingrag@geocites.com", "UW");
     });
+
+    it("should have specific school id in questions array", () => {
+        const e = new Intern("Ragnar", "kingrag@gmail.com", "UW");
+        expect(e.getQuestions()[0].name).toBe("school1");
+    });
 });

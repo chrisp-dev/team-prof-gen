@@ -21,27 +21,19 @@ async function ask(quests) {
         answers.push(response);
         return response;
     });
-    console.log('inside: ', result);
-    // is 'Engineer','Intern',or'No'
-    const newAsk = ["Engineer", "Intern", "No"].includes(result.moreEmp);
-    console.log(newAsk);
-    // if (!newAsk) {
+
     switch (result.moreEmp) {
         case 'Engineer':
             return ask(Engineer.getQuestions());
-            break;
 
         case 'Intern':
-            ask(Intern.getQuestions());
-            break;
+            return ask(Intern.getQuestions());
 
         case 'No':
             return answers;
 
         default:
-            ask(continuityQuestion);
-            break;
-        // }
+            return ask(continuityQuestion);
     }
 
 }

@@ -2,15 +2,9 @@ const Manager = require('./lib/manager');
 const Employee = require('./lib/employee');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
+const { continueQuestion } = require('./lib');
 const inquirer = require('inquirer');
 const fs = require('fs');
-
-const continuityQuestion = {
-    type: 'list',
-    message: 'Anymore employees to add?',
-    choices: ['Engineer', 'Intern', 'No'],
-    name: `moreEmp`
-}
 
 // contains team info
 const answers = [];

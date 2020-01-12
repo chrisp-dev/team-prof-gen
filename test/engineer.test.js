@@ -9,4 +9,9 @@ describe("Engineer class", () => {
         const e = new Engineer();
         expect(typeof e).toBe("object");
     });
+
+    it("should get/set id", () => {
+        const e = new Engineer();
+        expect(e.getId()).toBe(1);
+    });
 });

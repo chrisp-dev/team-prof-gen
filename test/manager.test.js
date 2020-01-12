@@ -11,12 +11,10 @@ describe("Manager class", () => {
     });
 
     it("should have managerQuestions", () => {
-        const e = new Manager();
-        expect(e.getQuestions().length).toBeGreaterThan(0);
+        expect(Manager.getQuestions().length).toBeGreaterThan(0);
     });
 
     it("should have specific office id in questions array", () => {
-        const e = new Manager("Ragnar", "kingrag@gmail.com");
-        expect(e.getQuestions()[2].name).toBe("officeNumber");
+        expect(Manager.getQuestions()[2].name).toBe("manager_office");
     });
 });
